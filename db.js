@@ -1,22 +1,53 @@
-var  mongoose = require('mongoose');
+// var  mongoose = require('mongoose');
 
-var express = require('express')
+// var express = require('express')
 
 
 
-mongoose.connect("mongodb://localhost/ahmedDB",{
+// mongoose.connect("mongodb://localhost/ahmedDB",{
 
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
 
-});
+// });
 
-const con = mongoose.connection
+// const con = mongoose.connection
 
-con.on('open',function(){
+// con.on('open',function(){
 
-    console.log('connected ...')
+//     console.log('connected ...')
     
     
-    })
+//     })
 
+
+  const mongoose = require('mongoose')
+  
+  var express = require('express')
+  const url = "mongodb+srv://ahmedezar:06990737@cluster0.pm9ta.mongodb.net/?retryWrites=true&w=majority";
+  
+  const connectionParams={
+      useNewUrlParser: true,
+      useUnifiedTopology: true 
+  }
+  mongoose.connect(url,connectionParams)
+      .then( () => {
+          console.log('Connected to the database ')
+      })
+      .catch( (err) => {
+          console.error(`Error connecting to the database. n${err}`);
+      })
+
+
+      const URI = process.env.MONGODB_URL;
+
+// mongoose.connect(URI, {
+
+// useNewUrlParser: true, 
+
+// useUnifiedTopology: true 
+
+// }, err => {
+// if(err) throw err;
+// console.log('Connected to MongoDB!!!')
+// });
